@@ -1,6 +1,8 @@
 # Site settings
 title: zZZ
 email: sitazpj@gmail.com
+description: ""
+baseurl: ""
 url: "http://sitaz.github.io/"
 
 # Build settings
