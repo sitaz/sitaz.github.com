@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Loop Fission"
+date:   2014-05-25 11:33:39
+categories: sitaz update
+---   
+所有事情都需要尝试着去做才会得到结果，否则只是一片空。
