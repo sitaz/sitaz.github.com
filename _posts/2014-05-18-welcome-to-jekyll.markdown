@@ -1,24 +1,26 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2014-05-18 02:17:39
-categories: jekyll update
----
+title:  "Loop Fission"
+date:   2014-05-25 11:33:39
+categories: sitaz update
+---   
+降低功耗的方法有很多种，拆分循环（LF）也可以在一定程度上降功耗，即写硬件的时候一个大循环中如果有若干语句，可以拆分为几个小循环（若大循环中没有环的话），每个小循环里面就是大循环实现的子集。但是这样就可能导致代码冗余。
 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
-
-Jekyll also offers powerful support for code snippets:
+以下是设想的伪代码
 
 {% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+for(i = 0; i < N; ++i){
+  {U[i],V[i]}
+  {W[i],X[i]}
+}
+#=>AFTER LF
+for(i = 0; i < N; ++i){
+  {U[i],V[i]}
+}
+for(i = 0; i < N; ++i){
+  {W[i],X[i]}
+}
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
-
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll]:    http://jekyllrb.com
+通过LF，每个循环执行的时候就不需要4个数组都处于活跃状态，可以降低一些功耗。  
+但是这种方法无疑会使代码长很多，所以在降功耗和简洁代码之间要有一种平衡。
